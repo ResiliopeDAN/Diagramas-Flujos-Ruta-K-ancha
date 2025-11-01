@@ -6,59 +6,56 @@ Este documento presenta los diagramas de flujo para los tres flujos principales 
 
 ```mermaid
 flowchart TD
-    A([Inicio: Usuario abre la app por primera vez]) --> B["Pantalla: Bienvenida (Slide 1)<br/>Bienvenido a Ruta K'ancha"]
-    B --> C(Acción: Usuario desliza)
-    C --> D["Pantalla: Valor 1 (Slide 2)<br/>Encuentra tu ruta más rápida"]
-    D --> E(Acción: Usuario desliza)
-    E --> F["Pantalla: Valor 2 (Slide 3)<br/>Ahorra tiempo y dinero"]
-    F --> G(Acción: Toca Comenzar)
-    G --> H["Pop-up: Solicitud de permiso de ubicación<br/>Ruta K'ancha necesita tu ubicación..."]
+    A(Inicio: Usuario abre la app por 1ra vez) --> B[Pantalla: Bienvenida (Slide 1)\n"Bienvenido a Ruta K'ancha"];
+    B --> C(Acción: Usuario desliza);
+    C --> D[Pantalla: Valor 1 (Slide 2)\n"Encuentra tu ruta más rápida"];
+    D --> E(Acción: Usuario desliza);
+    E --> F[Pantalla: Valor 2 (Slide 3)\n"Ahorra tiempo y dinero"];
+    F --> G(Acción: Toca "Comenzar");
+    G --> H[Pop-up: Solicitud de Permiso de Ubicación\n"Ruta K'ancha necesita tu ubicación..."];
 
-    H --> I{Acción: Usuario elige permiso}
-    I -- Permitir (Recomendado) --> J[Estado del sistema: GPS activado]
-    I -- Solo esta vez --> J
-    I -- Rechazar --> K[Estado del sistema: GPS desactivado]
+    H --> I{Acción: Usuario elige permiso};
+    I -- "Permitir (Recomendado)" --> J[Estado del Sistema: GPS Activado];
+    I -- "Solo esta vez" --> J;
+    I -- "Rechazar" --> K[Estado del Sistema: GPS Desactivado];
 
-    J --> L(Fin: Ir a pantalla principal)
-    K --> L
+    J --> L(Fin: Ir a Pantalla Principal);
+    K --> L;
 ```
 
 ## Flujo 2: Planificar un Viaje (A -> B)
 
 ```mermaid
 flowchart TD
-    subgraph Ingreso_de_Datos [Ingreso de datos]
-        IA[Pantalla: Inicio (Mapa)] --> IB(Acción: Toca barra «Adónde vas?»)
-        IB --> IC["Pantalla: Búsqueda (inputs)<br/>Origen: Tu ubicación (actual)<br/>Destino: vacío"]
+    subgraph Ingreso de Datos
+        A[Pantalla: Inicio (Mapa)] --> B(Acción: Toca barra "Adónde vas?");
+        B --> C[Pantalla: Búsqueda (Inputs)\nOrigen: "Tu Ubicación (Actual)"\nDestino: (vacío)];
 
-        IC --> ID{¿Usuario cambia origen?}
-        ID -- Sí --> IE["Pantalla: Seleccionar origen<br/>Buscar o elegir en mapa"]
-        IE --> IF(Acción: Selecciona Plaza de Armas)
-        IF --> IG["Pantalla: Búsqueda (inputs)<br/>Origen: Plaza de Armas<br/>Destino: vacío"]
+        C --> D{¿Usuario cambia Origen?};
+        D -- "Sí" --> E[Pantalla: Seleccionar Origen\n(Buscar, Elegir en mapa)];
+        E --> F(Acción: Selecciona "Plaza de Armas");
+        F --> G[Pantalla: Búsqueda (Inputs)\nOrigen: "Plaza de Armas"\nDestino: (vacío)];
 
-        ID -- No, usa ubicación actual --> IG
+        D -- "No (Usa Ubicación Actual)" --> G;
 
-        IG --> IH["Acción: Escribe y selecciona destino<br/>Ejemplo: UANCV"]
-        IH --> II(Acción: Toca botón Buscar)
+        G --> H(Acción: Escribe y selecciona "Destino"\nEj: "UANCV");
+        H --> I(Acción: Toca botón "Buscar");
     end
 
-    subgraph Calculo_y_Resultados [Cálculo y resultados]
-        II --> JJ{Sistema: Calcula rutas A→B}
+    subgraph Cálculo y Resultados
+        I --> J{Sistema: Calcula rutas A->B};
 
-        JJ -- Fallo, sin rutas --> KK["Pantalla: Resultados (vacía)<br/>No se encontraron rutas directas.<br/>Intenta con otro destino."]
-        KK --> LL(Acción: Toca Atrás)
-        LL --> IC
+        J -- "Fallo (Sin rutas)" --> K[Pantalla: Resultados (Vacía)\n"No se encontraron rutas directas.\nIntenta con otro destino."];
+        K --> L(Acción: Toca "Atrás");
+        L --> C;
 
-        JJ -- Éxito, rutas encontradas --> MM["Pantalla: Resultados (lista)<br/>Rutas sugeridas (1-3 opciones)"]
-        MM --> MM1(Opción 1: Línea 10)
-        MM --> MM2(Opción 2: Línea 15)
+        J -- "Éxito (Rutas encontradas)" --> M[Pantalla: Resultados (Lista)\n"Rutas sugeridas (1-3 opciones)"];
+        M(Opción 1: Línea 10) --> N(Acción: Toca Opción 1);
+        M(Opción 2: Línea 15) --> N;
 
-        MM1 --> NN(Acción: Toca una opción)
-        MM2 --> NN
-
-        NN --> OO["Pantalla: Detalle de viaje (navegación)<br/>Muestra mapa A→B y pasos"]
-        OO --> PP["Pasos:<br/>1. Caminar a Paradero X<br/>2. Tomar Línea 10<br/>3. Bajar en Paradero Y..."]
-        PP --> QQ(Fin del flujo)
+        N --> O[Pantalla: Detalle de Viaje (Navegación)\n(Muestra mapa A->B y pasos)];
+        O(Pasos:\n1. Caminar a Paradero X\n2. Tomar Línea 10\n3. Bajar en Paradero Y...);
+        O --> P(Fin del Flujo);
     end
 ```
 
@@ -66,20 +63,20 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    A1[Pantalla: Inicio (Mapa)] --> B1(Acción: Toca pestaña Explorar)
-    B1 --> C1["Pantalla: Explorar (lista)<br/>Barra de búsqueda y listado completo"]
+    A[Pantalla: Inicio (Mapa)] --> B(Acción: Toca pestaña "Explorar");
+    B --> C[Pantalla: Explorar (Lista)\n(Muestra Barra de Búsqueda + Lista completa de líneas)];
 
-    C1 --> D1{¿Usuario usa búsqueda?}
-    D1 -- Sí --> E1(Acción: Escribe Línea 10)
-    E1 --> F1["Pantalla: Explorar (lista filtrada)<br/>Solo muestra Línea 10"]
+    C --> D{¿Usuario usa Búsqueda?};
+    D -- "Sí" --> E(Acción: Escribe "Línea 10");
+    E --> F[Pantalla: Explorar (Lista Filtrada)\n(Solo muestra "Línea 10")];
 
-    D1 -- No, navega la lista --> G1(Acción: Toca Línea 10)
-    F1 --> G1
+    D -- "No (Navega la lista)" --> G(Acción: Toca "Línea 10");
+    F --> G;
 
-    G1 --> H1["Pantalla: Detalle de ruta (mapa)<br/>Trazado completo de Línea 10"]
-    H1 --> I1[Panel informativo:<br/>Línea 10 | Ícono Guardar (futuro)]
+    G --> H[Pantalla: Detalle de Ruta (Mapa)\n(Muestra mapa con trazado COMPLETO de Línea 10)];
+    H(Panel Info:\n"Línea 10" | Ícono "Guardar" [Futuro]);
 
-    H1 --> J1(Acción: Toca Atrás)
-    J1 --> C1
-    H1 --> K1(Fin del flujo)
+    H --> I(Acción: Toca "Atrás");
+    I --> C;
+    H --> J(Fin del Flujo);
 ```
