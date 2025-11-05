@@ -7,10 +7,10 @@ Este documento resume, en diagramas de flujo (Mermaid), la secuencia de sprints 
 ```mermaid
 flowchart TD
     start1((Inicio Hito 1)) --> S1["S-1 Kick-off y User Flows\n- Reunión de kick-off\n- Configurar Jira y backlog\n- Leydy: Mapear flujos clave"]
-    S1 --> S2["S-2 Wireframes Flujo Principal\n- Leydy: Wireframes baja fidelidad Planificador A a B\n- Validación del equipo"]
+    S1 --> S2["S-2 Wireframes Flujo Principal\n- Leydy: Wireframes baja fidelidad Planificador A->B\n- Validación del equipo"]
     S2 --> S3["S-3 Wireframes Flujos Secundarios\n- Leydy: Onboarding, Auth y Explorador"]
     S3 --> S4["S-4 Sistema de Diseño\n- Leydy: Material 3 (colores, tipografía, componentes)"]
-    S4 --> S5["S-5 Mockups Flujo Principal\n- Leydy: UI alta fidelidad Planificador A a B"]
+    S4 --> S5["S-5 Mockups Flujo Principal\n- Leydy: UI alta fidelidad Planificador A->B"]
     S5 --> S6["S-6 Mockups Flujos Secundarios\n- Leydy: Onboarding y Explorador"]
     S6 --> S7["S-7 Mockups Contextuales\n- Leydy: Autenticación, Perfil y Favoritos"]
     S7 --> S8["S-8 Prototipado Interconectado\n- Leydy: Navegación completa en Figma"]
@@ -25,7 +25,7 @@ flowchart TD
 flowchart TD
     start2((Inicio Hito 2)) --> E2A["EPIC 2: Cimientos Técnicos"]
 
-    subgraph E2Sub["EPIC 2: Cimientos Técnicos"]
+    subgraph EPIC 2: Cimientos Técnicos
         direction TB
         E2A --> S11["S-11 Arquitectura Backend\n- Hector: Diseñar esquema PostgreSQL"]
         S11 --> S12["S-12 Setup Backend y Auth\n- Hector: Supabase + tablas + Auth"]
@@ -36,7 +36,7 @@ flowchart TD
 
     S15 --> E3A["EPIC 3: Explorador de Rutas"]
 
-    subgraph E3Sub["EPIC 3: Explorador de Rutas"]
+    subgraph EPIC 3: Explorador de Rutas
         direction TB
         E3A --> S16["S-16 Endpoints de Rutas\n- Hector: API GET /rutas y detalle"]
         S16 --> S17["S-17 Mapeo y Carga Piloto\n- Leydy: Dataset piloto 5 rutas\n- Hector: Ingesta BBDD"]
@@ -47,7 +47,7 @@ flowchart TD
 
     S20 --> E4A["EPIC 4: Planificador de Rutas"]
 
-    subgraph E4Sub["EPIC 4: Planificador A a B"]
+    subgraph EPIC 4: Planificador A->B
         direction TB
         E4A --> S21["S-21 Algoritmo Planificador I+D\n- Darío/Hector: Investigación PostGIS"]
         S21 --> S22["S-22 Algoritmo Planificador Backend\n- Hector: Endpoint /planificar"]
@@ -59,7 +59,7 @@ flowchart TD
 
     S26 --> E5A["EPIC 5: Funciones Complementarias"]
 
-    subgraph E5Sub["EPIC 5: Funciones Complementarias"]
+    subgraph EPIC 5: Funciones Complementarias
         direction TB
         E5A --> S27["S-27 Rutas Favoritas Backend\n- Hector: API favoritos"]
         S27 --> S28["S-28 Rutas Favoritas Frontend\n- Luis: Guardar y listar favoritos"]
@@ -70,7 +70,7 @@ flowchart TD
 
     S31 --> E6A["EPIC 6: Pruebas y Lanzamiento"]
 
-    subgraph E6Sub["EPIC 6: Pruebas y Lanzamiento"]
+    subgraph EPIC 6: Pruebas y Lanzamiento
         direction TB
         E6A --> S32["S-32 Pruebas Internas Alpha\n- Equipo: Pruebas de campo y reporte"]
         S32 --> S33["S-33 Corrección de Bugs\n- Darío/Luis/Hector: Resolución crítica"]
