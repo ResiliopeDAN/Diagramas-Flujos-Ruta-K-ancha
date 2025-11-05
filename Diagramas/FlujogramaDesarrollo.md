@@ -16,7 +16,7 @@ flowchart TD
     S7 --> S8["S-8 Prototipado Interconectado\n- Leydy: Navegación completa en Figma"]
     S8 --> S9["S-9 Mock Data y Simulación\n- Leydy: 5-6 rutas ficticias realistas"]
     S9 --> S10["S-10 Pruebas y Presentación\n- Equipo: Pruebas con user personas\n- Leydy: Ajustes finales y ensayo"]
-    S10 --> end1((Prototipo Alta Fidelidad listo para Expotech))
+    S10 --> end1((Prototipo Alta Fidelidad ))
 ```
 
 ## Hito 2, prebando:
