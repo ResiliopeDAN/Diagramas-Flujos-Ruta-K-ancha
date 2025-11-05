@@ -19,7 +19,7 @@ flowchart TD
     S10 --> end1((Prototipo Alta Fidelidad listo para Expotech))
 ```
 
-## Hito 2: MVP Funcional (Sprints 11 - 36)
+## Hito 2, prebando:
 
 ```mermaid
 flowchart TD
@@ -47,7 +47,7 @@ flowchart TD
 
     S20 --> E4A["EPIC 4: Planificador de Rutas"]
 
-    subgraph EPIC 4: Planificador A->B
+    subgraph "EPIC 4: Planificador A->B"
         direction TB
         E4A --> S21["S-21 Algoritmo Planificador I+D\n- Darío/Hector: Investigación PostGIS"]
         S21 --> S22["S-22 Algoritmo Planificador Backend\n- Hector: Endpoint /planificar"]
@@ -81,4 +81,3 @@ flowchart TD
 
     S36 --> end2((MVP Android listo y publicado))
 ```
-
